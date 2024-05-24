@@ -1,5 +1,6 @@
 import "./globals.css";
 import Providers from "./providers";
+import Layout from "./components/layout";
 
 import { Roboto } from "next/font/google";
 
@@ -16,9 +17,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="ru">
+    <html lang="ru" suppressHydrationWarning>
       <body className={roboto.className}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <Layout>{children}</Layout>
+        </Providers>
       </body>
     </html>
   );

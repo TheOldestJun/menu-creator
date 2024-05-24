@@ -22,4 +22,19 @@ model Recipe {
   title        String    @unique
   ingredients  Product[]
   instructions String
+  category     Category  @relation(fields: [categoryId], references: [id])
+  menu         Menu[]
+  categoryId   Int
+}
+
+model Category {
+  id      Int      @id @default(autoincrement())
+  title   String   @unique
+  recipes Recipe[]
+}
+
+model Menu {
+  id     Int      @id @default(autoincrement())
+  title  DateTime @default(now())
+  dishes Recipe[]
 }
