@@ -1,7 +1,13 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
+import Providers from "./providers";
 
-const inter = Inter({ subsets: ["latin", "cyrillic"] });
+import { Roboto } from "next/font/google";
+
+const roboto = Roboto({
+  weight: "500",
+  subsets: ["latin", "cyrillic"],
+  display: "swap",
+});
 
 export const metadata = {
   title: "Че бум хавать?",
@@ -11,7 +17,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ru">
-      <body className={inter.className}>{children}</body>
+      <body className={roboto.className}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
