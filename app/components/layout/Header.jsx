@@ -3,9 +3,11 @@ import {
     MobileNav,
     Typography,
     IconButton,
+    Collapse
 } from "@material-tailwind/react";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function Header() {
     const [openNav, setOpenNav] = useState(false);
@@ -25,9 +27,10 @@ export default function Header() {
                 color="blue-gray"
                 className="p-1 font-normal"
             >
-                <a href="#" className="flex items-center">
+                <Link href="/menu/first-dishes" className="flex items-center">
                     Первые блюда
-                </a>
+                </Link>
+
             </Typography>
             <Typography
                 as="li"
@@ -35,9 +38,9 @@ export default function Header() {
                 color="blue-gray"
                 className="p-1 font-normal"
             >
-                <a href="#" className="flex items-center">
+                <Link href="/menu/garnishes" className="flex items-center">
                     Гарниры
-                </a>
+                </Link>
             </Typography>
             <Typography
                 as="li"
@@ -45,9 +48,9 @@ export default function Header() {
                 color="blue-gray"
                 className="p-1 font-normal"
             >
-                <a href="#" className="flex items-center">
+                <Link href="/menu/meat-dishes" className="flex items-center">
                     Мясные блюда
-                </a>
+                </Link>
             </Typography>
             <Typography
                 as="li"
@@ -55,9 +58,29 @@ export default function Header() {
                 color="blue-gray"
                 className="p-1 font-normal"
             >
-                <a href="#" className="flex items-center">
+                <Link href="/menu/salads" className="flex items-center">
                     Салаты
-                </a>
+                </Link>
+            </Typography>
+            <Typography
+                as="li"
+                variant="small"
+                color="blue-gray"
+                className="p-1 font-normal"
+            >
+                <Link href="/menu/breakfasts" className="flex items-center">
+                    Завтраки
+                </Link>
+            </Typography>
+            <Typography
+                as="li"
+                variant="small"
+                color="blue-gray"
+                className="p-1 font-normal"
+            >
+                <Link href="/menu/beverages" className="flex items-center">
+                    Напитки
+                </Link>
             </Typography>
         </ul>
     );
@@ -114,9 +137,9 @@ export default function Header() {
                         </IconButton>
                     </div>
                 </div>
-                <MobileNav open={openNav}>
+                <Collapse open={openNav}>
                     {navList}
-                </MobileNav>
+                </Collapse>
             </Navbar>
         </div>
     );
