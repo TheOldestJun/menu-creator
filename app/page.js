@@ -1,6 +1,6 @@
+import ClientPage from "./clientPage";
+import prisma from "@/prisma";
 
-import ClientPage from "./client";
-
-export default function Home() {
+export default async function Home() {
   return <ClientPage />;
 }

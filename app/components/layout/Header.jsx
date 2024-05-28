@@ -8,7 +8,7 @@ import {
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-export default function Header() {
+export default function Header({ categories }) {
     const [openNav, setOpenNav] = useState(false);
 
     useEffect(() => {
@@ -17,70 +17,25 @@ export default function Header() {
             () => window.innerWidth >= 960 && setOpenNav(false)
         );
     }, []);
+    const navData = categories.map((category) => {
+        return (
+            <Typography
+                as="li"
+                variant="small"
+                color="blue-gray"
+                className="p-1 font-normal font-caveat text-2xl"
+                key={category.id}
+            >
+                <Link href={`/menu/${category.url}`} className="flex items-center">
+                    {category.title}
+                </Link>
 
+            </Typography>
+        )
+    })
     const navList = (
         <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-            >
-                <Link href="/menu/first-dishes" className="flex items-center">
-                    Первые блюда
-                </Link>
-
-            </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-            >
-                <Link href="/menu/garnishes" className="flex items-center">
-                    Гарниры
-                </Link>
-            </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-            >
-                <Link href="/menu/meat-dishes" className="flex items-center">
-                    Мясные блюда
-                </Link>
-            </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-            >
-                <Link href="/menu/salads" className="flex items-center">
-                    Салаты
-                </Link>
-            </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-            >
-                <Link href="/menu/breakfasts" className="flex items-center">
-                    Завтраки
-                </Link>
-            </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-            >
-                <Link href="/menu/beverages" className="flex items-center">
-                    Напитки
-                </Link>
-            </Typography>
+            {navData}
         </ul>
     );
 
@@ -89,11 +44,9 @@ export default function Header() {
             <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4">
                 <div className="flex items-center justify-between text-blue-gray-900">
                     <Typography
-                        as="a"
-                        href="#"
-                        className="mr-4 cursor-pointer py-1.5 font-medium"
+                        className={`mr-4 cursor-pointer py-1.5 text-3xl font-caveat`}
                     >
-                        Меню на неделю
+                        <Link href="/">Меню на неделю</Link>
                     </Typography>
                     <div className="flex items-center gap-4">
                         <div className="mr-4 hidden lg:block">{navList}</div>

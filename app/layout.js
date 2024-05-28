@@ -1,13 +1,14 @@
 import "./globals.css";
 import Providers from "./providers";
 import Layout from "./components/layout";
+import prisma from "@/prisma";
 
-import { Roboto } from "next/font/google";
+import { Caveat } from "next/font/google";
 
-const roboto = Roboto({
-  weight: "500",
-  subsets: ["latin", "cyrillic"],
-  display: "swap",
+const caveat = Caveat({
+  weight: "400",
+  subsets: ["cyrillic", "cyrillic-ext"],
+  variable: "--font-caveat",
 });
 
 export const metadata = {
@@ -19,12 +20,22 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+const getProps = async () => {
+  try {
+    const categories = await prisma.category.findMany();
+    return { categories };
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export default async function RootLayout({ children }) {
+  const { categories } = await getProps();
   return (
     <html lang="ru" suppressHydrationWarning>
-      <body className={roboto.className}>
+      <body className={`${caveat.variable} font-caveat`}>
         <Providers>
-          <Layout>{children}</Layout>
+          <Layout categories={categories}>{children}</Layout>
         </Providers>
       </body>
     </html>
