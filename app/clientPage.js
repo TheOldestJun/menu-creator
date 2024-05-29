@@ -1,10 +1,9 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import gsap from "gsap";
 
 const ClientPage = () => {
-  const component = useRef(null);
   useEffect(() => {
     const tl = gsap.timeline();
     tl.fromTo(
