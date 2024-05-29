@@ -2,6 +2,8 @@
 import Image from "next/image";
 import { useEffect } from "react";
 import gsap from "gsap";
+import Plate from "./components/menu/Plate";
+import Menu from "./components/menu/Menu";
 
 const ClientPage = () => {
   useEffect(() => {
@@ -22,24 +24,9 @@ const ClientPage = () => {
   }, []);
   return (
     <>
-      <div className="fixed inset-0 -z-10">
-        <Image
-          src="/dishes/background.webp"
-          alt="background image"
-          width="1920"
-          height="1272"
-          className="w-full h-full object-cover"
-        />
-      </div>
-      <div className="">
-        <Image
-          src="/dishes/menu.webp"
-          alt="background image"
-          width="450"
-          height="640"
-          className="rounded-lg opacity-0 menu-animation fixed -z-8 mt-2 md:ml-[185px] mx-auto "
-        />
-      </div>
+      <Plate className="rounded-lg opacity-0 menu-animation fixed -z-8 mt-2 md:ml-[185px] mx-auto ">
+        <Menu />
+      </Plate>
     </>
   );
 };
