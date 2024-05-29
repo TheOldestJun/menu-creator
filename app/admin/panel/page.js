@@ -15,6 +15,8 @@ import {
   TabPanel,
 } from "@material-tailwind/react";
 
+import ProductPanel from "@/app/components/admin/ProductPanel";
+
 export default function Page() {
   const tabsData = [
     {
@@ -48,7 +50,9 @@ export default function Page() {
             </TabsHeader>
             <TabsBody>
               <TabPanel value="create-recipe">Create recipe</TabPanel>
-              <TabPanel value="create-product">Create product</TabPanel>
+              <TabPanel value="create-product">
+                <ProductPanel />
+              </TabPanel>
             </TabsBody>
           </Tabs>
         </CardBody>

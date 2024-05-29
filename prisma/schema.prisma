@@ -25,6 +25,7 @@ model Recipe {
   category     Category  @relation(fields: [categoryId], references: [id])
   menu         Menu[]
   categoryId   Int
+  img          String?
 }
 
 model Category {

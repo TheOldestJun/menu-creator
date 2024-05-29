@@ -33,7 +33,7 @@ export default async function RootLayout({ children }) {
   const { categories } = await getProps();
   return (
     <html lang="ru" suppressHydrationWarning>
-      <body className={`${caveat.variable} font-caveat`}>
+      <body className={`${caveat.variable} font-caveat text-2xl`}>
         <Providers>
           <Layout categories={categories}>{children}</Layout>
         </Providers>
