@@ -9,7 +9,7 @@ export default function Menu() {
     const categories = data.map(category => {
         return (
             <Typography
-                className={`mr-4 cursor-pointer py-1.5 text-5xl font-caveat text-gray-400`}
+                className={`mr-4 cursor-pointer py-1.5 text-5xl font-caveat text-gray-400 z-10`}
                 key={category.id}
             >
                 <Link href={`/menu/${category.url}`}>{category.title}</Link>
@@ -17,7 +17,7 @@ export default function Menu() {
         )
     })
     return (
-        <div className="text-white z-0 fixed top-[20%] left-[5%]">
+        <div className="fixed top-[20%]">
             {categories}
         </div>
     )
