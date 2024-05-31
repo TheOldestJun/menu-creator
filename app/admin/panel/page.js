@@ -31,7 +31,7 @@ export default function Page() {
 
   return (
     <div className="flex flex-col items-center">
-      <Card className="w-[98vw]">
+      <Card className="w-[98vw] h-[90vh]">
         <CardBody>
           <Typography
             variant="h5"
@@ -40,7 +40,7 @@ export default function Page() {
           >
             Панель администратора
           </Typography>
-          <Tabs value={tabsData[0].value}>
+          <Tabs value={tabsData[0].value} className="h-90vh">
             <TabsHeader>
               {tabsData.map(({ label, value }) => (
                 <Tab key={value} value={value}>
@@ -49,8 +49,10 @@ export default function Page() {
               ))}
             </TabsHeader>
             <TabsBody>
-              <TabPanel value="create-recipe">Create recipe</TabPanel>
-              <TabPanel value="create-product">
+              <TabPanel className="h-[90vh]" value="create-recipe">
+                Create recipe
+              </TabPanel>
+              <TabPanel className="h-[90vh]" value="create-product">
                 <ProductPanel />
               </TabPanel>
             </TabsBody>
