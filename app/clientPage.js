@@ -16,7 +16,7 @@ const ClientPage = () => {
         x: -100,
       },
       {
-        opacity: 0.8,
+        opacity: 0.9,
         duration: 2,
         x: 0,
         ease: "back.out",
@@ -29,7 +29,7 @@ const ClientPage = () => {
         x: 50,
       },
       {
-        opacity: 0.8,
+        opacity: 0.9,
         duration: 1,
         x: 0,
         ease: "back.out",
