@@ -4,12 +4,20 @@ import Link from "next/link"
 
 export default function Menu() {
     const { data, isLoading, error } = useGetCategoriesQuery()
-    if (isLoading) return <h1>Loading...</h1>
-    if (error) return <h1>Error</h1>
+    if (isLoading) return (
+        <div className="fixed top-[20%]">
+            <Typography className="text-5xl font-caveat text-gray-400">Загрузка...</Typography>
+        </div>
+    )
+    if (error) return (
+        <div className="fixed top-[20%]">
+            <Typography className="text-5xl font-caveat text-gray-400">{`Ошибка сервера: ${error.message}`}</Typography>
+        </div>
+    )
     const categories = data.map(category => {
         return (
             <Typography
-                className={`mr-4 cursor-pointer py-1.5 text-5xl font-caveat text-gray-400 z-10`}
+                className={` cursor-pointer py-1.5 text-5xl font-caveat text-gray-400`}
                 key={category.id}
             >
                 <Link href={`/menu/${category.url}`}>{category.title}</Link>
