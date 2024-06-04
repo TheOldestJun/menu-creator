@@ -42,6 +42,7 @@ export default function ProductPanel() {
     const handleAddProduct = (item) => {
         console.log(item)
         addProduct(item);
+        getProductData()
     };
 
     return (
