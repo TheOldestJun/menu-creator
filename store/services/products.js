@@ -5,11 +5,20 @@ export const productsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "/api/products",
   }),
+  tagTypes: ["Products"],
   endpoints: (builder) => ({
     getAllProducts: builder.query({
       query: () => "get-all",
     }),
+    addProduct: builder.mutation({
+      query: (title) => ({
+        url: "add",
+        method: "POST",
+        body: { title },
+      }),
+      invalidatesTags: ["Products"],
+    }),
   }),
 });
 
-export const { useGetAllProductsQuery } = productsApi;
+export const { useGetAllProductsQuery, useAddProductMutation } = productsApi;
