@@ -6,10 +6,10 @@ export const productsApi = createApi({
     baseUrl: "/api/products",
   }),
   tagTypes: ["Products"],
-  providesTags: ["Products"],
   endpoints: (builder) => ({
     getAllProducts: builder.query({
       query: () => "get-all",
+      providesTags: ["Products"],
     }),
     addProduct: builder.mutation({
       query: (title) => ({

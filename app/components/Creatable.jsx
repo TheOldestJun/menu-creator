@@ -1,8 +1,11 @@
 import CreatableSelect from "react-select/creatable"
 import { useState } from "react";
+import { useAddProductMutation } from "@/store/services/products";
 
 export default function Creatable({ options, value, onCreateOption, onSelectedOption }) {
-
+    const [addProduct] = useAddProductMutation({
+        refetchOnMountOrArgChange: true,
+    });
     const customStyles = {
         container: (provided) => ({
             ...provided,
@@ -25,7 +28,7 @@ export default function Creatable({ options, value, onCreateOption, onSelectedOp
             isClearable
             placeholder="Выберите продукт"
             onChange={(value) => onSelectedOption(value)}
-            onCreateOption={(value => onCreateOption(value))}
+            onCreateOption={(value => addProduct(value))}
             options={options}
             value={value}
             createOptionPosition="last"
