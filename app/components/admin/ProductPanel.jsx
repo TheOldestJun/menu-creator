@@ -1,11 +1,13 @@
-import { useGetAllProductsQuery } from "@/store/services/products";
+import { useGetAllProductsQuery, useAddProductMutation } from "@/store/services/products";
 import { useState } from "react";
 import { Input } from "@material-tailwind/react";
 import Creatable from "../Creatable";
+import { capitalize } from "@/libs/helpers";
 
 export default function ProductPanel() {
-    const [selectedProduct, setSelectedProduct] = useState();
-
+    const [selectedProducts, setSelectedProducts] = useState([]);
+    console.log(selectedProducts)
+    const [addProduct] = useAddProductMutation();
     const {
         data,
         error,
@@ -24,8 +26,10 @@ export default function ProductPanel() {
         <div className="w-full flex flex-col justify-center">
             <Input label="Выберите продукт" />
             <Creatable options={products}
-                value={selectedProduct}
-                onSelectedOption={setSelectedProduct}
+                value={selectedProducts}
+                onSelectedOption={setSelectedProducts}
+                onCreateOption={(value => addProduct(capitalize(value)))}
+                isMulti={true}
             />
         </div>
     )
