@@ -2,6 +2,7 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import Image from "next/image";
+import { Toaster } from "react-hot-toast";
 
 export default function Layout({ children, categories }) {
   return (
@@ -19,6 +20,7 @@ export default function Layout({ children, categories }) {
           />
         </div>
         {children}
+        <Toaster position="top-center" reverseOrder={false} />
       </main>
       <Footer />
     </div>
